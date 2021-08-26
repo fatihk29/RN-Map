@@ -4,7 +4,7 @@ import {View, Text, Dimensions, Image, StyleSheet} from 'react-native';
 const CustomMarker = ({item}) => {
   return (
     <View style={styles.roundMarker}>
-      <Image style={styles.roundImage} />
+      {/* <Image style={styles.roundImage} source={{uri: item.markerImage}} /> */}
     </View>
   );
 };
@@ -22,3 +22,5 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
 });
+
+export default CustomMarker;
