@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
 });
-
+//
 export default () => (
   <View style={styles.container}>
     <MapView
@@ -26,5 +26,5 @@ export default () => (
         longitudeDelta: 0.0121,
       }}
     />
-  </View>
+  </View> 
 );
