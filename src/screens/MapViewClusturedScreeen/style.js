@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: '90%',
+    height: '93%',
   },
   callout: {
     position: 'relative',
@@ -21,6 +21,20 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  info: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: '10%',
+    marginTop: 10,
+    borderRadius: 20,
+    borderWidth: 0.7,
+    borderColor: 'green',
+    backgroundColor: '#ccc',
+  },
+  infoText: {
+    color: 'black',
   },
 });
 

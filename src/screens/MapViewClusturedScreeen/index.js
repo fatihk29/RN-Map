@@ -38,12 +38,6 @@ const MapViewClustered = () => {
     latitudeDelta: 0.5,
     longitudeDelta: 0.5,
   });
-  const [locationInitial, setLocationInitial] = useState({
-    latitude: 39.925533,
-    longitude: 32.866287,
-    latitudeDelta: 0.5,
-    longitudeDelta: 0.5,
-  });
 
   React.useEffect(() => {}, []);
 
@@ -51,7 +45,10 @@ const MapViewClustered = () => {
     Alert.alert('New Location', 'will be added', [
       {
         text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
+        onPress: () => {
+          setMarkerVisible(false);
+          console.log('Cancel Pressed');
+        },
         style: 'cancel',
       },
       {text: 'OK', onPress: () => console.log('OK Pressed')},
@@ -91,6 +88,13 @@ const MapViewClustered = () => {
           </Marker>
         ) : null}
       </MapView>
+      {markerVisible ? (
+        <View style={styles.info}>
+          <Icon name="information-circle" size={25} color="black" />
+          <Text style={styles.infoText}>To Add New Location Click</Text>
+          <Icon name="location" size={27} color="#052" />
+        </View>
+      ) : null}
     </View>
   );
 };
