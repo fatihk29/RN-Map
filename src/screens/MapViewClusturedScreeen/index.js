@@ -41,6 +41,17 @@ const MapViewClustered = () => {
 
   React.useEffect(() => {}, []);
 
+  // city: 'Yalıhüyük',
+  // lat: '37.3008',
+  // lng: '32.0855',
+  // country: 'Turkey',
+  // iso2: 'TR',
+  // admin_name: 'Konya',
+  // capital: 'minor',
+  // population: '',
+  // population_proper: '',
+  // },
+
   const onPress = () => {
     Alert.alert('New Location', 'will be added', [
       {
@@ -55,7 +66,18 @@ const MapViewClustered = () => {
         text: 'OK',
         onPress: () => {
           setMarkerVisible(false);
-          console.log('Cancel Pressed');
+          console.log('ok Pressed', location);
+          data.push({
+            city: 'xx',
+            lat: `${location.latitude}`,
+            lng: `${location.longitude}`,
+            country: 'Turkey',
+            iso2: 'TR',
+            admin_name: 'Not knowing',
+            capital: 'minor',
+            population: '',
+            population_proper: '',
+          });
         },
       },
     ]);
