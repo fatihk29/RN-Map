@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import CustomizedMarkerLabel from '../../components/CustomizedMarkerLabel';
 import data from '../../helpers/data';
+import data2 from '../../helpers/data2';
 import styles from './style';
 
 const initialRegion = {
@@ -50,7 +51,13 @@ const MapViewClustered = () => {
         },
         style: 'cancel',
       },
-      {text: 'OK', onPress: () => console.log('OK Pressed')},
+      {
+        text: 'OK',
+        onPress: () => {
+          setMarkerVisible(false);
+          console.log('Cancel Pressed');
+        },
+      },
     ]);
   };
 
