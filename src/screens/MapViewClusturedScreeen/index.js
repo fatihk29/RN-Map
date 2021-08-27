@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {View, TouchableOpacity, Text, Alert} from 'react-native';
 import MapView from 'react-native-map-clustering';
-
 import {PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
-import CustomizedLabel from '../../components/CustomizedLabel';
+
+import CustomizedMarkerLabel from '../../components/CustomizedMarkerLabel';
 import data from '../../helpers/data';
 import styles from './style';
 
@@ -24,14 +24,13 @@ function renderClusteredMarkers() {
         longitude: Number.parseFloat(item.lng),
       }}>
       <Callout style={styles.callout}>
-        <CustomizedLabel item={item} />
+        <CustomizedMarkerLabel item={item} />
       </Callout>
     </Marker>
   ));
 }
 const MapViewClustered = () => {
   const [markerVisible, setMarkerVisible] = useState(false);
-
   const [location, setLocation] = useState({
     latitude: 39.925533,
     longitude: 32.866287,

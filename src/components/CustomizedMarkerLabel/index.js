@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-function CustomizedLabel({item}) {
+function CustomizedMarkerLabel({item}) {
   return (
     <View style={styles.container}>
       <Text>{item.city}</Text>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomizedLabel;
+export default CustomizedMarkerLabel;
