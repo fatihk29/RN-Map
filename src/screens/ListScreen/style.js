@@ -17,7 +17,10 @@ const styles = StyleSheet.create({
   itemContainer: {
     shadowColor: 'black',
     shadowOpacity: 0.26,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
     shadowRadius: 8,
     elevation: 5,
     borderRadius: 10,
@@ -42,12 +45,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '4%',
     flexDirection: 'row',
-    backgroundColor: '#ccc',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#ccc',
   },
   numOfDataText: {
-    fontSize: 18,
+    fontSize: 16,
+    paddingLeft: 5,
   },
 });
 

@@ -2,7 +2,6 @@ import React from 'react';
 import {
   FlatList,
   SafeAreaView,
-  SectionList,
   Text,
   TouchableOpacity,
   View,
@@ -39,7 +38,7 @@ const ListScreen = () => {
         />
       </SafeAreaView>
       <View style={styles.numOfDataContainer}>
-        <Text>Number of Location: </Text>
+        <Text>Number of Location:</Text>
         <Text style={styles.numOfDataText}>{data.length}</Text>
       </View>
     </>
