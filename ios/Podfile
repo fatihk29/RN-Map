@@ -14,6 +14,8 @@ target 'hty' do
 
   pod 'react-native-maps', :path => '../node_modules/react-native-maps'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'htyTests' do
     inherit! :complete
     # Pods for testing
