@@ -93,6 +93,8 @@ const MapViewClustered = () => {
         style={styles.map}
         initialRegion={initialRegion}
         provider={PROVIDER_GOOGLE}
+        clusterColor="blue"
+        showsCompass={true}
         onLongPress={e => {
           setLocation({
             longitude: e.nativeEvent.coordinate.longitude,
