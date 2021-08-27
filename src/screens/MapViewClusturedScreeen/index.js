@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import MapView from 'react-native-map-clustering';
 
 import {Marker, Callout} from 'react-native-maps';
+import CustomizedLabel from '../../components/CustomizedLabel';
 import data from '../../helpers/data';
 import styles from './style';
 
@@ -22,7 +23,7 @@ function renderRandomMarkers() {
         longitude: parseInt(item.lng, 10),
       }}>
       <Callout style={styles.callout}>
-        <Text>{item.city}</Text>
+        <CustomizedLabel item={item} />
       </Callout>
     </Marker>
   ));

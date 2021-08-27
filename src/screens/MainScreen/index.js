@@ -29,8 +29,7 @@ const MainScreen = () => {
               coordinate={{
                 latitude: parseInt(item.lat, 10),
                 longitude: parseInt(item.lng, 10),
-              }}
-              onDragEnd={e => console.log(e)}>
+              }}>
               <Callout style={styles.callout}>
                 <Text>{item.city}</Text>
               </Callout>
