@@ -27,8 +27,8 @@ const MainScreen = () => {
               key={index}
               ref={mapRef}
               coordinate={{
-                latitude: parseInt(item.lat, 10),
-                longitude: parseInt(item.lng, 10),
+                latitude: Number.parseFloat(item.lat, 10),
+                longitude: Number.parseFloat(item.lng, 10),
               }}>
               <Callout style={styles.callout}>
                 <Text>{item.city}</Text>

@@ -19,8 +19,8 @@ function renderRandomMarkers() {
     <Marker
       key={index}
       coordinate={{
-        latitude: parseInt(item.lat, 10),
-        longitude: parseInt(item.lng, 10),
+        latitude: Number.parseFloat(item.lat),
+        longitude: Number.parseFloat(item.lng),
       }}>
       <Callout style={styles.callout}>
         <CustomizedLabel item={item} />
@@ -32,7 +32,7 @@ const MapViewClustered = () => {
   return (
     <View style={styles.container}>
       <MapView style={styles.map} initialRegion={initialRegion}>
-        {renderRandomMarkers(144)}
+        {renderRandomMarkers()}
       </MapView>
     </View>
   );
