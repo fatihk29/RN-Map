@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   markerVisibleText: {
     color: 'red',
     fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 

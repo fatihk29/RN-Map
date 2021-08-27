@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import MapView, {PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import data from '../../helpers/data';
@@ -24,6 +24,17 @@ const MainScreen = () => {
   });
 
   React.useEffect(() => {}, []);
+
+  const onPress = () => {
+    Alert.alert('New Location', 'will be added', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+  };
 
   return (
     <View style={styles.container}>
@@ -73,15 +84,17 @@ const MainScreen = () => {
         })}
         {markerVisible ? (
           <Marker
-            // onPress={() => {}}
+            onPress={() => {
+              onPress();
+            }}
             coordinate={location}>
             <View style={styles.markerVisibleContainer}>
-              <TouchableOpacity >
+              <TouchableOpacity>
                 <Text style={styles.markerVisibleText}>
                   {'Add New Location'}
                 </Text>
               </TouchableOpacity>
-              <Icon name="location" size={50} color="red" />
+              <Icon name="location" size={50} color="#052" />
             </View>
           </Marker>
         ) : null}
