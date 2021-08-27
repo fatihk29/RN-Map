@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, TouchableOpacity, Text, Alert} from 'react-native';
-import MapView from 'react-native-map-clustering';
 import {PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
+import MapView from 'react-native-map-clustering';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import CustomizedMarkerLabel from '../../components/CustomizedMarkerLabel';
@@ -16,21 +16,8 @@ const initialRegion = {
   longitudeDelta: 0.0421,
 };
 
-function renderClusteredMarkers() {
-  return data.map((item, index) => (
-    <Marker
-      key={index}
-      coordinate={{
-        latitude: Number.parseFloat(item.lat),
-        longitude: Number.parseFloat(item.lng),
-      }}>
-      <Callout style={styles.callout}>
-        <CustomizedMarkerLabel item={item} />
-      </Callout>
-    </Marker>
-  ));
-}
 const MapViewClustered = () => {
+  const [allData, setAllData] = useState(data);
   const [markerVisible, setMarkerVisible] = useState(false);
   const [location, setLocation] = useState({
     latitude: 39.925533,
@@ -58,7 +45,7 @@ const MapViewClustered = () => {
         text: 'Cancel',
         onPress: () => {
           setMarkerVisible(false);
-          console.log('Cancel Pressed');
+          // console.log('Cancel Pressed');
         },
         style: 'cancel',
       },
@@ -66,22 +53,39 @@ const MapViewClustered = () => {
         text: 'OK',
         onPress: () => {
           setMarkerVisible(false);
-          console.log('ok Pressed', location);
-          data.push({
-            city: 'xx',
-            lat: `${location.latitude}`,
-            lng: `${location.longitude}`,
-            country: 'Turkey',
-            iso2: 'TR',
-            admin_name: 'Not knowing',
-            capital: 'minor',
-            population: '',
-            population_proper: '',
-          });
+          setAllData([
+            ...allData,
+            {
+              city: 'xx',
+              lat: `${location.latitude}`,
+              lng: `${location.longitude}`,
+              country: 'Turkey',
+              iso2: 'TR',
+              admin_name: 'Not knowing',
+              capital: 'minor',
+              population: '',
+              population_proper: '',
+            },
+          ]);
         },
       },
     ]);
   };
+
+  function renderClusteredMarkers() {
+    return allData.map((item, index) => (
+      <Marker
+        key={index}
+        coordinate={{
+          latitude: Number.parseFloat(item.lat),
+          longitude: Number.parseFloat(item.lng),
+        }}>
+        <Callout style={styles.callout}>
+          <CustomizedMarkerLabel item={item} />
+        </Callout>
+      </Marker>
+    ));
+  }
 
   return (
     <View style={styles.container}>
