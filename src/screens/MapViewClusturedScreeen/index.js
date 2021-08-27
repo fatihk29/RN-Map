@@ -1,8 +1,9 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useState} from 'react';
+import {View, TouchableOpacity, Text, Alert} from 'react-native';
 import MapView from 'react-native-map-clustering';
 
-import {Marker, Callout} from 'react-native-maps';
+import {PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
+import Icon from 'react-native-vector-icons/Ionicons';
 import CustomizedLabel from '../../components/CustomizedLabel';
 import data from '../../helpers/data';
 import styles from './style';
@@ -14,7 +15,7 @@ const initialRegion = {
   longitudeDelta: 0.0421,
 };
 
-function renderRandomMarkers() {
+function renderClusteredMarkers() {
   return data.map((item, index) => (
     <Marker
       key={index}
@@ -29,10 +30,66 @@ function renderRandomMarkers() {
   ));
 }
 const MapViewClustered = () => {
+  const [markerVisible, setMarkerVisible] = useState(false);
+
+  const [location, setLocation] = useState({
+    latitude: 39.925533,
+    longitude: 32.866287,
+    latitudeDelta: 0.5,
+    longitudeDelta: 0.5,
+  });
+  const [locationInitial, setLocationInitial] = useState({
+    latitude: 39.925533,
+    longitude: 32.866287,
+    latitudeDelta: 0.5,
+    longitudeDelta: 0.5,
+  });
+
+  React.useEffect(() => {}, []);
+
+  const onPress = () => {
+    Alert.alert('New Location', 'will be added', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+  };
+
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} initialRegion={initialRegion}>
-        {renderRandomMarkers()}
+      <MapView
+        style={styles.map}
+        initialRegion={initialRegion}
+        provider={PROVIDER_GOOGLE}
+        onLongPress={e => {
+          setLocation({
+            longitude: e.nativeEvent.coordinate.longitude,
+            latitude: e.nativeEvent.coordinate.latitude,
+            longitudeDelta: 0.1,
+            latitudeDelta: 0.1,
+          });
+          setMarkerVisible(true);
+        }}>
+        {renderClusteredMarkers()}
+        {markerVisible ? (
+          <Marker
+            onPress={() => {
+              onPress();
+            }}
+            coordinate={location}>
+            <View style={styles.markerVisibleContainer}>
+              <TouchableOpacity>
+                <Text style={styles.markerVisibleText}>
+                  {'Add New Location'}
+                </Text>
+              </TouchableOpacity>
+              <Icon name="location" size={50} color="#052" />
+            </View>
+          </Marker>
+        ) : null}
       </MapView>
     </View>
   );

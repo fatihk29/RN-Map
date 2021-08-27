@@ -42,7 +42,7 @@ const MainScreen = () => {
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         region={{
-          latitude: 39.91987,
+          latitude: 39.92087,
           longitude: 32.85427,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
